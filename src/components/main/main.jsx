@@ -1,6 +1,5 @@
-import { Box, Button, Container, Typography } from '@mui/material'
+import { Box, Container, Typography } from '@mui/material'
 import '../app/app.css'
-import React from 'react'
 
 const Main = () => {
     return (

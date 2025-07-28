@@ -1,0 +1,51 @@
+{
+    "section": {
+        "title": "What We Do",
+        "subtitle": "We specialize in providing authentic CD IELTS mock test experiences.",
+        "services": [
+            {
+                "icon": "fas fa-laptop-code",
+                "title": "CD IELTS Mock Tests",
+                "description": "Get hands-on experience with real exam formats. Practice in a genuine computer-delivered environment that mirrors the official IELTS test."
+            },
+            {
+                "icon": "fas fa-clock",
+                "title": "Real-Time Simulation",
+                "description": "Our platform simulates actual test timing and interface. Train your time management skills and build confidence before the real test day."
+            },
+            {
+                "icon": "fas fa-chart-line",
+                "title": "Instant Feedback",
+                "description": "Receive detailed analysis of your performance right after your test. Identify your strengths and focus on improving your weaknesses."
+            },
+            {
+                "icon": "fas fa-user-graduate",
+                "title": "For Students & Professionals",
+                "description": "Whether you're applying for university or immigration, our platform is tailored for all candidates who want top scores in IELTS."
+            }
+        ]
+    },
+    "card": [
+        {
+            "type": "Listening",
+            "title": "Academic Listening Practice Test 1",
+            "level": "Intermediate",
+            "description": "Practice listening skills with academic audio materials.",
+            "duration": 30
+        },
+        {
+            "type": "Reading",
+            "title": "General Reading Sample Test A",
+            "level": "Beginner",
+            "description": "Improve reading comprehension with general topics.",
+            "duration": 60
+        },
+        {
+            "type": "Speaking",
+            "title": "Mock Interview Session",
+            "level": "Intermediate",
+            "description": "Practice IELTS speaking with timed questions.",
+            "duration": 15
+        }
+    ]
+}
