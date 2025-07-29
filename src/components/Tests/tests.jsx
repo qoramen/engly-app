@@ -74,7 +74,7 @@ const Test = () => {
                         ))}
                     </Box>
                 </Container>
-                <Box sx={{textAlign:'center', paddingTop:'25px'}}><button  className='btn-main'>View Tests</button></Box>
+                <Box sx={{textAlign:'center', paddingTop:'25px'}}><button  className='btn-main'>Start Tests</button></Box>
             </Box>
         </>
     )
