@@ -1,0 +1,235 @@
+{
+  "reading": [
+    {
+      "part": 1,
+      "article": "TEXT",
+      "quiz": [
+        {
+          "countId": "17",
+          "count": "Questions 1 - 7",
+          "rule": "TEXT",
+          "questions": [
+            {
+              "questionId": "1",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "2",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "3",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "4",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "5",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "6",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "7",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            }
+          ]
+        },
+        {
+          "countId": "813",
+          "count": "Questions 8 - 13",
+          "rule": "TEXT",
+          "questions": [
+            { "questionId": "8", "text": "Mike and Bob Bryan made changes to the types of [8] used on their racket frames.", "answer": "ANSWER" },
+            { "questionId": "9", "text": "Players were not allowed to use the spaghetti-strung racket because of the amount of [9] it created.", "answer": "ANSWER" },
+            { "questionId": "10", "text": "Changes to rackets can be regarded as being as important as players' diets or the [10] they do.", "answer": "ANSWER" },
+            { "questionId": "11", "text": "All rackets used to have natural strings made from the [11] of animals.", "answer": "ANSWER" },
+            { "questionId": "12", "text": "Mike and Bob Bryan made changes to the types of [12] used on their racket frames.", "answer": "ANSWER" },
+            { "questionId": "13", "text": "Pete Sampras had metal [13] put into the frames of his rackets.", "answer": "ANSWER" }
+          ]
+        }
+      ]
+    },
+    {
+      "part": 2,
+      "article": "TEXT",
+      "quiz": [
+        {
+          "countId": "1419",
+          "count": "Questions 14 - 19",
+          "rule": "TEXT",
+          "options": ["A", "B", "C", "D", "E", "F", "G"],
+          "questions": [
+            { "questionId": "14", "question": "a reference to a denial of involvement in piracy", "answer": "A" },
+            { "questionId": "15", "question": "details of how a campaign to eradicate piracy was carried out", "answer": "B" },
+            { "questionId": "16", "question": "a mention of the circumstances in which states in the ancient world would make use of pirates", "answer": "C" },
+            { "questionId": "17", "question": "a reference to how people today commonly view pirates", "answer": "D" },
+            { "questionId": "18", "question": "an explanation of how some people were encouraged not to return to piracy", "answer": "E" },
+            { "questionId": "19", "question": "a mention of the need for many sailing vessels to stay relatively close to land", "answer": "F" }
+          ]
+        },
+        {
+          "countId": "2021",
+          "count": "Questions 20 - 21",
+          "rule": "TEXT",
+          "question": "Which TWO of the following statements does the writer make about inhabitants of the Mediterranean region in the ancient world?",
+          "options": [
+            "A. They often used stolen vessels to carry out pirate attacks.",
+            "B. They managed to escape capture by the authorities because they knew the area so well.",
+            "C. They paid for information about the routes merchant ships would take.",
+            "D. They depended more on the sea for their livelihood than on farming.",
+            "E. They stored many of the goods taken in pirate attacks in coves along the coastline."
+          ],
+          "answers": ["A", "B"]
+        },
+        {
+          "countId": "2223",
+          "count": "Questions 22 - 23",
+          "rule": "TEXT",
+          "question": "Which TWO of the following statements does the writer make about piracy and ancient Greece?",
+          "options": [
+            "A. The state estimated that very few people were involved in piracy.",
+            "B. Attitudes towards piracy changed shortly after the Iliad and the Odyssey were written.",
+            "C. Important officials were known to occasionally take part in piracy.",
+            "D. Every citizen regarded pirate attacks on cities as unacceptable.",
+            "E. A favourable view of piracy is evident in certain ancient Greek texts."
+          ],
+          "answers": ["A", "B"]
+        },
+        {
+          "countId": "2426",
+          "count": "Questions 24 - 26",
+          "rule": "TEXT",
+          "title": "Ancient Rome and piracy",
+          "text": "Piracy was an issue ancient Rome had to deal with, but it also brought some benefits for Rome. For example, pirates supplied slaves that were important for Rome's industries. However, attacks on vessels transporting [24] to Rome resulted in calls for [25] for the pirates responsible. Nevertheless, piracy continued, with some pirates demanding a [26] for the return of the Roman officials they captured.",
+          "answers": ["ANSWER", "ANSWER", "ANSWER"]
+        }
+      ]
+    },
+    {
+      "part": 3,
+      "article": "TEXT",
+      "quiz": [
+        {
+          "countId": "2730",
+          "count": "Questions 27 - 30",
+          "rule": "TEXT",
+          "questions": [
+            {
+              "questionId": "27",
+              "question": "What point does the writer make about misinformation in the first paragraph?",
+              "options": [
+                "A. Misinformation is a relatively recent phenomenon.",
+                "B. Some people find it easy to identify misinformation.",
+                "C. Misinformation changes as it is passed from one person to another.",
+                "D. There may be a number of reasons for the spread of misinformation."
+              ],
+              "answer": "A"
+            },
+            {
+              "questionId": "28",
+              "question": "What does the writer say about the role of technology?",
+              "options": [
+                "A. It may at some point provide us with a solution to misinformation.",
+                "B. It could fundamentally alter the way in which people regard information.",
+                "C. Misinformation changes as it is passed from one person to another.",
+                "D. It has changed the way in which organisations use misinformation."
+              ],
+              "answer": "A"
+            },
+            {
+              "questionId": "29",
+              "question": "What is the writer doing in the fourth paragraph?",
+              "options": [
+                "A. comparing the different opinions people have of misinformation",
+                "B. explaining how the effects of misinformation have changed over time",
+                "C. outlining which issues connected with misinformation are significant today",
+                "D. describing the attitude of policy makers towards misinformation in the media"
+              ],
+              "answer": "A"
+            },
+            {
+              "questionId": "30",
+              "question": "What point does the writer make about regulation in the USA?",
+              "options": [
+                "A. The guidelines issued by the FDA need to be simplified.",
+                "B. Regulation does not affect people's opinions of new prescription drugs.",
+                "C. The USA has more regulatory bodies than most other countries.",
+                "D. Regulation fails to prevent misinformation from appearing in the media."
+              ],
+              "answer": "A"
+            }
+          ]
+        },
+        {
+          "countId": "3136",
+          "count": "Questions 31 - 36",
+          "rule": "TEXT",
+          "title": "What happens when people encounter misinformation?",
+          "question": "Although people have [31] to misinformation, there is debate about precisely how and when we label something as true or untrue. The philosophers Descartes and Spinoza had [32] about how people engage with information. While Descartes believed that people accept or reject information after considering whether it is true or not, Spinoza argued that people accepted all information they encountered (and by default misinformation) and did not verify or reject it until afterwards. Moreover, Spinoza believed that a distinct [33] is involved in these stages. Recent research has provided [34] for Spinoza's theory and it would appear that people accept all encountered information as if it were true, even if this is for an extremely [35], and do not label the information as true or false until later. This is consistent with the fact that the resources for scepticism and the resources for perceiving and encoding are in [36] in the brain.",
+          "options": [
+            "A. constant conflict",
+            "B. additional evidence",
+            "C. experimental subjects",
+            "D. short period",
+            "E. extreme distrust",
+            "F. frequent exposure",
+            "G. mental operation",
+            "H. dubious reason",
+            "I. different ideas"
+          ],
+          "answers": ["F", "I", "G", "B", "D", "A"]
+        },
+        {
+          "countId": "3740",
+          "count": "Questions 37 - 40",
+          "rule": "TEXT",
+          "questions": [
+            {
+              "questionId": "37",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "38",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "39",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            },
+            {
+              "questionId": "40",
+              "question": "TEXT",
+              "options": ["TRUE", "NOT GIVEN", "FALSE"],
+              "answer": "TRUE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

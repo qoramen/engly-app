@@ -47,13 +47,10 @@ Xabar: ${formData.message}
     }
 
     return (
-        <Box sx={{ backgroundColor: '#f6f6f6' }} height={'100vh'}>
+        <Box sx={{ backgroundColor: '#fff' }} height={'100vh'}>
             <Container>
                 <Typography variant='h3' py={5} color='#333' textAlign="center">Contact</Typography>
-
                 <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} alignItems="center" justifyContent="center" gap={5}>
-
-                    {/* FORM SECTION */}
                     <Box
                         component="form"
                         onSubmit={handleSubmit}
@@ -72,14 +69,7 @@ Xabar: ${formData.message}
                             value={formData.name}
                             onChange={handleChange}
                             sx={{
-                                '& label': {
-                                    backgroundColor: '#f6f6f6',
-                                    padding: '0 4px',
-                                },
-                                '& label.Mui-focused': {
-                                    color: '#b90504',
-                                    backgroundColor: '#f6f6f6',
-                                },
+                                '& label.Mui-focused': { color: '#b90504', },
                                 '& .MuiOutlinedInput-root': {
                                     '&:hover fieldset': { borderColor: '#b90504' },
                                     '&.Mui-focused fieldset': { borderColor: '#b90504' },

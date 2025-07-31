@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "task": 1,
+      "prompt": "You recently visited a museum and had a good time. Write a letter to your friend about the experience. Include what you saw, what you liked most, and whether you recommend it."
+    },
+    {
+      "task": 2,
+      "prompt": "Some people believe that university education should be free for everyone. To what extent do you agree or disagree with this statement?"
+    }
+  ]
+}
