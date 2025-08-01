@@ -5,22 +5,42 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const App = () => {
-  const [tasks, setTasks] = useState([]);
+  const [reading, setReading] = useState([]);
+  const [listening, setListening] = useState([]);
+  const [writing, setWriting] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://192.168.88.225:5000/api/readings")
+      .get("http://192.168.100.185:5000/api/readings",)
       .then((res) => {
-        setTasks(res.data[0]);
-        console.log(res.data[0]);
+        setReading(res.data[0]);
+        console.log("Reading:", res.data[0]);
       })
       .catch((err) => {
         console.error("Xatolik:", err);
       });
+    // 
+    axios
+      .get("http://192.168.100.185:5000/api/listening")
+      .then((res) => {
+        setListening(res.data[0]);
+        console.log("Listening:", res.data[0]);
+      })
+      .catch((err) => {
+        console.error("Listening xatolik:", err);
+      });
+    // 
+    axios
+      .get("http://192.168.100.185:5000/api/writings")
+      .then((res) => {
+        setWriting(res.data[0]);
+        console.log("Writing:", res.data[0]);
+      })
+      .catch((err) => {
+        console.error("Listening xatolik:", err);
+      });
   }, []);
 
-
-  
   return (
     <Box>
       <Navbar />
