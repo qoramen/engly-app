@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Reading, Listening, Writing, TestTimer } from '../';
 import {
-    Box, Button, Typography, Paper, Dialog, DialogContent, DialogActions
+    Box, Button, Typography, Paper, Dialog, DialogContent, DialogActions, useMediaQuery
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from '@mui/material/styles';
 
 const TestDetail = () => {
     const [section, setSection] = useState(0)
@@ -12,6 +13,9 @@ const TestDetail = () => {
     const [isTimeOver, setIsTimeOver] = useState(false)
     const [sectionKey, setSectionKey] = useState(0)
     const navigate = useNavigate()
+
+    const theme = useTheme()
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
 
     const handleTimeEnd = () => {
         setIsTimeOver(true)
@@ -23,22 +27,16 @@ const TestDetail = () => {
     };
 
     const handleNext = () => setOpenConfirm(true)
-
     const goToNextSection = () => {
         setSection(section + 1)
         setSectionKey(prev => prev + 1)
         setIsTimeOver(false)
         setStartConfirm(true)
     };
-
     const confirmNext = () => {
-        setSection(section + 1)
-        setSectionKey(prev => prev + 1)
         setOpenConfirm(false)
-        setIsTimeOver(false)
         goToNextSection()
     };
-
     const cancelNext = () => setOpenConfirm(false)
 
     const renderSection = () => {
@@ -46,24 +44,26 @@ const TestDetail = () => {
         if (section === 1) return <Listening disabled={isTimeOver} />
         if (section === 2) return <Writing disabled={isTimeOver} />
         return (
-            <Paper sx={{ height: '70vh' }}>
-                <Box
-                    sx={{
-                        height: '100%',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        flexDirection: 'column',
-                        textAlign: 'center',
-                        gap: 2,
-                    }}
-                >
-                    <Typography variant="h4" color="#333">
+            <Paper sx={{
+                height: '70vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                p: 2
+            }}>
+                <Box>
+                    <Typography variant={isSmall ? "h6" : "h4"} color="#333" gutterBottom>
                         Test finished! Thank you for completing all sections.
                     </Typography>
                     <Button
+                        fullWidth={isSmall}
                         variant="contained"
-                        sx={{ backgroundColor: "#b90504", '&:hover': { backgroundColor: '#a00403' } }}
+                        sx={{
+                            backgroundColor: "#b90504",
+                            '&:hover': { backgroundColor: '#a00403' },
+                            mt: 2
+                        }}
                         onClick={() => navigate('/')}
                     >Finish Test</Button>
                 </Box>
@@ -72,16 +72,24 @@ const TestDetail = () => {
     };
 
     return (
-        <Box>
-            <Box display="flex" justifyContent="space-between" alignItems="center" p={2} sx={{borderBottom:'2px solid #b90504'}}>
-                <Typography variant="h6" color="#b90504">
+        <Box sx={{ px: isSmall ? 1 : 4, py: 2 }}>
+            <Box
+                display="flex"
+                flexDirection={isSmall ? 'column' : 'row'}
+                justifyContent="space-between"
+                alignItems={isSmall ? 'flex-start' : 'center'}
+                gap={2}
+                pb={2}
+                borderBottom="2px solid #b90504"
+            >
+                <Typography variant={isSmall ? "h6" : "h5"} color="#b90504">
                     {section === 0 ? "Reading" : section === 1 ? "Listening" : section === 2 ? "Writing" : "Completed"}
                 </Typography>
 
                 {section < 3 && (
                     <TestTimer
                         key={sectionKey}
-                        duration={60}
+                        duration={1}
                         onTimeEnd={handleTimeEnd}
                         isPaused={openConfirm || startConfirm}
                     />
@@ -94,14 +102,18 @@ const TestDetail = () => {
                         sx={{
                             backgroundColor: "#b90504",
                             "&:hover": { backgroundColor: "#a00403" },
+                            width: isSmall ? '100%' : 'auto'
                         }}
                     >
                         Next Section
                     </Button>
                 )}
             </Box>
+
             {renderSection()}
-            <Dialog open={openConfirm} onClose={cancelNext}>
+
+            {/* Next section confirmation */}
+            <Dialog open={openConfirm} onClose={cancelNext} fullWidth>
                 <DialogContent>
                     <Typography>If you're sure, let's start the next section</Typography>
                 </DialogContent>
@@ -111,8 +123,9 @@ const TestDetail = () => {
                 </DialogActions>
             </Dialog>
 
+            {/* First-time start confirmation */}
             {section < 3 && (
-                <Dialog open={startConfirm} onClose={() => navigate("/tests")}>
+                <Dialog open={startConfirm} onClose={() => navigate("/tests")} fullWidth>
                     <DialogContent>
                         <Typography>If you are ready, let's start</Typography>
                     </DialogContent>
@@ -124,7 +137,6 @@ const TestDetail = () => {
                     </DialogActions>
                 </Dialog>
             )}
-
         </Box>
     );
 };

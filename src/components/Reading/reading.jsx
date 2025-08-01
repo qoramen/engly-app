@@ -1,22 +1,31 @@
-import {
-  Box,
-  Button,
-  Typography,
-  Paper,
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
-} from "@mui/material";
-import readingData from "../../data.json";
-import { useState } from "react";
+import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem, TextField, CircularProgress, } from "@mui/material"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import ArticleViewer from "../article/article";
 
 const Reading = ({ disabled }) => {
-  const tests = readingData.reading;
+  const [tests, setTests] = useState([]);
   const [selectedPart, setSelectedPart] = useState(0);
   const [answers, setAnswers] = useState({});
-  const currentTest = tests[selectedPart];
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("http://192.168.130.194:5000/api/readings")
+      .then((res) => {
+        console.log("API response:", res.data);
+
+        if (res.data.length > 0 && res.data[0].reading) {
+          setTests(res.data[0].reading);
+        }
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching reading data:", err);
+        setLoading(false);
+      });
+  }, []);
+
 
   const handleChange = (id, value) => {
     setAnswers((prev) => ({
@@ -24,6 +33,24 @@ const Reading = ({ disabled }) => {
       [id]: value,
     }));
   };
+
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="70vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  if (!tests || tests.length === 0) {
+    return (
+      <Typography textAlign="center" mt={4}>
+        No reading tests available.
+      </Typography>
+    );
+  }
+
+  const currentTest = tests[selectedPart];
 
   return (
     <Box py={1} sx={{ backgroundColor: "#f6f6f6" }}>
@@ -36,8 +63,7 @@ const Reading = ({ disabled }) => {
             sx={{
               color: selectedPart === index ? "white" : "#b90504",
               borderColor: "#b90504",
-              backgroundColor:
-                selectedPart === index ? "#b90504" : "transparent",
+              backgroundColor: selectedPart === index ? "#b90504" : "transparent",
               "&:hover": {
                 backgroundColor: "#b90504",
                 color: "white",
@@ -51,21 +77,27 @@ const Reading = ({ disabled }) => {
 
       <Box display="grid" gridTemplateColumns="1fr 1fr" gap={3} height="70vh">
         <Paper sx={{ p: 2, overflowY: "auto" }}>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            mb={1}
-          >
-            <Typography variant="h6">Reading Article</Typography>
-          </Box>
-          <Typography>{currentTest.article}</Typography>
+          <Typography variant="h6" gutterBottom>Reading Article</Typography>
+          {typeof currentTest.article === 'string' && (
+            <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
+              {currentTest.article}
+            </Typography>
+          )}
+          
+          {typeof currentTest.article === 'object' &&
+            (currentTest.article.title || currentTest.article.parts) && (
+              <ArticleViewer article={currentTest.article} />
+            )}
+
+          {typeof currentTest.article === 'object' && currentTest.article.text && (
+            <Typography variant="body1" sx={{ whiteSpace: 'pre-line', mt: 2 }}>
+              {currentTest.article.text}
+            </Typography>
+          )}
         </Paper>
 
         <Paper sx={{ p: 2, overflowY: "auto" }}>
-          <Typography variant="h6" gutterBottom>
-            Questions
-          </Typography>
+          <Typography variant="h6" gutterBottom>Questions</Typography>
 
           {currentTest.quiz.map((quizBlock, quizIndex) => (
             <Box key={quizIndex} mb={4}>
@@ -75,7 +107,6 @@ const Reading = ({ disabled }) => {
 
               {quizBlock.questions?.map((q, qIndex) => {
                 const options = q.options || quizBlock.options;
-
                 return (
                   <Box key={q.questionId} mb={3}>
                     <Typography variant="subtitle1" gutterBottom>

@@ -92,7 +92,7 @@ const Tests = () => {
           <Grid
             container
             spacing={4}
-            justifyContent="center" // markazga joylashtiradi
+            justifyContent="center"
           >
             {testData.map((card, index) => (
               <Grid item key={index}>
