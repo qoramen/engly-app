@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("http://192.168.100.185:5000/api/readings",)
+      .get("https://engly-backend.onrender.com/api/readings",)
       .then((res) => {
         setReading(res.data[0]);
         console.log("Reading:", res.data[0]);
@@ -21,7 +21,7 @@ const App = () => {
       });
     // 
     axios
-      .get("http://192.168.100.185:5000/api/listening")
+      .get("https://engly-backend.onrender.com/api/listening")
       .then((res) => {
         setListening(res.data[0]);
         console.log("Listening:", res.data[0]);
@@ -31,7 +31,7 @@ const App = () => {
       });
     // 
     axios
-      .get("http://192.168.100.185:5000/api/writings")
+      .get("https://engly-backend.onrender.com/api/writings")
       .then((res) => {
         setWriting(res.data[0]);
         console.log("Writing:", res.data[0]);
