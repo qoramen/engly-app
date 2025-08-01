@@ -1,29 +1,28 @@
-import { Box, Button, Typography, Paper, TextField } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  Paper,
+  TextField,
+  CircularProgress
+} from "@mui/material";
 import { useState, useEffect } from "react";
-import axios from "axios";
 
-const Writing = ({ disabled }) => {
+const Writing = ({ disabled, writing }) => {
   const [selectedTask, setSelectedTask] = useState(0);
   const [answers, setAnswers] = useState({});
   const [tests, setTests] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const currentTest = tests[selectedTask];
+  const currentAnswer = answers[selectedTask] || "";
 
   useEffect(() => {
-    // API'dan writing testlarini olish
-    const fetchWritingTests = async () => {
-      try {
-        const response = await axios.get("http://192.168.130.194:5000/api/writings"); 
-        const apiData = response.data;
-
-        if (apiData.length > 0 && apiData[0].writing) {
-          setTests(apiData[0].writing);
-        }
-      } catch (err) {
-        console.error("Error fetching writing tests:", err);
-      }
-    };
-
-    fetchWritingTests();
-  }, []);
+    if (writing && writing.length > 0 && writing[0].writing) {
+      setTests(writing[0].writing);
+      setLoading(false);
+    }
+  }, [writing]);
 
   const handleAnswerChange = (value) => {
     setAnswers((prev) => ({
@@ -32,11 +31,26 @@ const Writing = ({ disabled }) => {
     }));
   };
 
-  const currentTest = tests[selectedTask];
+  //  So'z va jumla sanovchi funksiya
+  const countWords = (text) =>
+    text.trim().split(/\s+/).filter((word) => word.length > 0).length;
+
+  const countSentences = (text) =>
+    text.split(/[.!?]+/).filter((sentence) => sentence.trim().length > 0).length;
+
+  const wordCount = countWords(currentAnswer);
+  const sentenceCount = countSentences(currentAnswer);
+
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="60vh">
+        <CircularProgress sx={{ color: "#b90504" }} />
+      </Box>
+    );
+  }
 
   return (
     <Box py={1}>
-      {/* Top buttons */}
       <Box display="flex" flexWrap="wrap" gap={2} my={1}>
         {tests.map((test, index) => (
           <Button
@@ -55,7 +69,6 @@ const Writing = ({ disabled }) => {
         ))}
       </Box>
 
-      {/* Prompt + Answer */}
       {currentTest && (
         <Box
           display="flex"
@@ -63,7 +76,6 @@ const Writing = ({ disabled }) => {
           gap={3}
           height={{ xs: "auto", md: "70vh" }}
         >
-          {/* Prompt */}
           <Paper sx={{ p: 2, flex: 1, overflowY: "auto" }}>
             <Typography variant="h6" gutterBottom>Prompt</Typography>
             <Typography sx={{ mb: 1 }}>{currentTest.count}</Typography>
@@ -72,29 +84,42 @@ const Writing = ({ disabled }) => {
             <Typography sx={{ mb: 1 }}>{currentTest.quiz}</Typography>
             {currentTest.text2 && <Typography sx={{ mb: 1 }}>{currentTest.text2}</Typography>}
             <Typography>{currentTest.words}</Typography>
+            {selectedTask === 0 && (
+              <Box mt={2}>
+                <img
+                  src="/image/writing-task-1.png"
+                  alt="Part 2 map"
+                  style={{ width: "100%", maxHeight: "300px", objectFit: "contain", borderRadius: 8 }}
+                />
+              </Box>
+            )}
           </Paper>
 
-          {/* Answer */}
           <Paper sx={{ p: 2, flex: 1, overflowY: "auto" }}>
             <Typography variant="h6" gutterBottom>Your Answer</Typography>
+
+
+            <Box display="flex" justifyContent="space-between" mb={1}>
+              <Typography variant="body2" color="text.secondary">
+                Words: {wordCount}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Sentences: {sentenceCount}
+              </Typography>
+            </Box>
+
             <TextField
               fullWidth
               multiline
               rows={18}
-              value={answers[selectedTask] || ""}
+              value={currentAnswer}
               onChange={(e) => handleAnswerChange(e.target.value)}
               disabled={disabled}
               sx={{
-                '& label.Mui-focused': {
-                  color: '#b90504',
-                },
+                '& label.Mui-focused': { color: '#b90504' },
                 '& .MuiOutlinedInput-root': {
-                  '&:hover fieldset': {
-                    borderColor: '#b90504',
-                  },
-                  '&.Mui-focused fieldset': {
-                    borderColor: '#b90504',
-                  },
+                  '&:hover fieldset': { borderColor: '#b90504' },
+                  '&.Mui-focused fieldset': { borderColor: '#b90504' },
                 },
               }}
             />

@@ -12,8 +12,8 @@ const App = () => {
     axios
       .get("https://engly-backend.onrender.com/api/readings",)
       .then((res) => {
-        setReading(res.data[0]);
-        console.log("Reading:", res.data[0]);
+        setReading(res.data);
+        console.log("Reading:", res.data);
       })
       .catch((err) => {
         console.error("Xatolik:", err);
@@ -22,8 +22,8 @@ const App = () => {
     axios
       .get("https://engly-backend.onrender.com/api/listening")
       .then((res) => {
-        setListening(res.data[0]);
-        console.log("Listening:", res.data[0]);
+        setListening(res.data);
+        console.log("Listening:", res.data);
       })
       .catch((err) => {
         console.error("Listening xatolik:", err);
@@ -32,8 +32,8 @@ const App = () => {
     axios
       .get("https://engly-backend.onrender.com/api/writings")
       .then((res) => {
-        setWriting(res.data[0]);
-        console.log("Writing:", res.data[0]);
+        setWriting(res.data);
+        console.log("Writing:", res.data);
       })
       .catch((err) => {
         console.error("Listening xatolik:", err);
@@ -53,7 +53,7 @@ const App = () => {
           </>
         } />
         <Route path='/tests' element={<Tests />} />
-        <Route path='/test/:id' element={<TestDetail />} />
+        <Route path='/test/:id' element={<TestDetail reading={reading} listening={listening} writing={writing}/>} />
       </Routes>
 
       <Footer />

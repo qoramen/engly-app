@@ -95,7 +95,7 @@ const Tests = () => {
             justifyContent="center"
           >
             {testData.map((card, index) => (
-              <Grid item key={index}>
+              <Grid key={index}>
                 <Card
                   sx={{
                     backgroundColor: "#e8e8e8 ",

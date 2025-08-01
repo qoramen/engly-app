@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import {
-    Box,
-    Button,
-    Paper,
-    Typography,
-    TextField,
-    useMediaQuery,
-    useTheme,
-} from "@mui/material";
+import { Box, Button, Paper, Typography, TextField, useMediaQuery, useTheme, } from "@mui/material";
 
-const Listening = ({ disabled }) => {
+const Listening = ({ disabled, listening }) => {
     const [tests, setTests] = useState([]);
     const [selectedPart, setSelectedPart] = useState(0);
     const [answers, setAnswers] = useState({});
@@ -20,18 +11,11 @@ const Listening = ({ disabled }) => {
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     useEffect(() => {
-        const fetchListening = async () => {
-            try {
-                const res = await axios.get("http://192.168.130.194:5000/api/listening");
-                setTests(res.data[0].listening);
-                setLoading(false);
-            } catch (err) {
-                console.error("Failed to fetch listening data:", err);
-            }
-        };
-
-        fetchListening();
-    }, []);
+        if (listening && listening.length > 0 && listening[0].listening) {
+            setTests(listening[0].listening);
+            setLoading(false);
+        }
+    }, [listening]);
 
     const handleAnswerChange = (questionNumber, value) => {
         setAnswers((prev) => ({
@@ -79,6 +63,15 @@ const Listening = ({ disabled }) => {
                     {currentPart?.audio && (
                         <Box mt={1}>
                             <audio controls src={currentPart?.audio} style={{ width: "100%" }} />
+                        </Box>
+                    )}
+                    {selectedPart === 1 && (
+                        <Box mt={2}>
+                            <img
+                                src="/image/part-2-map.png"
+                                alt="Part 2 map"
+                                style={{ width: "100%", maxHeight: "300px", objectFit: "contain", borderRadius: 8 }}
+                            />
                         </Box>
                     )}
                 </Paper>

@@ -1,31 +1,23 @@
-import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem, TextField, CircularProgress, } from "@mui/material"
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { Box, Button, Typography, Paper, FormControl, InputLabel, Select, MenuItem, TextField, CircularProgress } from "@mui/material";
+import { useEffect, useState } from "react";
 import ArticleViewer from "../article/article";
 
-const Reading = ({ disabled }) => {
-  const [tests, setTests] = useState([]);
+const Reading = ({ disabled, reading }) => {
   const [selectedPart, setSelectedPart] = useState(0);
   const [answers, setAnswers] = useState({});
   const [loading, setLoading] = useState(true);
+  const [tests, setTests]= useState(reading?.[0]?.reading || [])
+
 
   useEffect(() => {
-    axios.get("http://192.168.130.194:5000/api/readings")
-      .then((res) => {
-        console.log("API response:", res.data);
+    if (reading && reading.length > 0 && reading[0].reading) {
+      setTests(reading[0].reading);
+      setLoading(false);
+    }
+  }, [reading]);
 
-        if (res.data.length > 0 && res.data[0].reading) {
-          setTests(res.data[0].reading);
-        }
-
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching reading data:", err);
-        setLoading(false);
-      });
-  }, []);
-
+  const currentTest = tests[selectedPart] || {};
+  const quiz = currentTest.quiz || [];
 
   const handleChange = (id, value) => {
     setAnswers((prev) => ({
@@ -36,21 +28,19 @@ const Reading = ({ disabled }) => {
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="70vh">
-        <CircularProgress />
+      <Box display="flex" justifyContent="center" alignItems="center" height="60vh">
+        <CircularProgress sx={{ color: "#b90504" }} />
       </Box>
     );
   }
 
-  if (!tests || tests.length === 0) {
+  if (tests.length === 0) {
     return (
       <Typography textAlign="center" mt={4}>
         No reading tests available.
       </Typography>
     );
   }
-
-  const currentTest = tests[selectedPart];
 
   return (
     <Box py={1} sx={{ backgroundColor: "#f6f6f6" }}>
@@ -83,7 +73,7 @@ const Reading = ({ disabled }) => {
               {currentTest.article}
             </Typography>
           )}
-          
+
           {typeof currentTest.article === 'object' &&
             (currentTest.article.title || currentTest.article.parts) && (
               <ArticleViewer article={currentTest.article} />
@@ -99,7 +89,7 @@ const Reading = ({ disabled }) => {
         <Paper sx={{ p: 2, overflowY: "auto" }}>
           <Typography variant="h6" gutterBottom>Questions</Typography>
 
-          {currentTest.quiz.map((quizBlock, quizIndex) => (
+          {quiz.map((quizBlock, quizIndex) => (
             <Box key={quizIndex} mb={4}>
               <Typography variant="subtitle1" fontWeight="bold" mb={1}>
                 {quizBlock.count}

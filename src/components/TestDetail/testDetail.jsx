@@ -6,13 +6,14 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useTheme } from '@mui/material/styles';
 
-const TestDetail = () => {
+const TestDetail = ({reading, listening, writing}) => {
     const [section, setSection] = useState(0)
     const [openConfirm, setOpenConfirm] = useState(false)
     const [startConfirm, setStartConfirm] = useState(true)
     const [isTimeOver, setIsTimeOver] = useState(false)
     const [sectionKey, setSectionKey] = useState(0)
     const navigate = useNavigate()
+    
 
     const theme = useTheme()
     const isSmall = useMediaQuery(theme.breakpoints.down('sm'))
@@ -40,9 +41,10 @@ const TestDetail = () => {
     const cancelNext = () => setOpenConfirm(false)
 
     const renderSection = () => {
-        if (section === 0) return <Reading disabled={isTimeOver} />
-        if (section === 1) return <Listening disabled={isTimeOver} />
-        if (section === 2) return <Writing disabled={isTimeOver} />
+        if (section === 0) return <Reading disabled={isTimeOver} reading={reading}/>
+        if (section === 1) return <Listening disabled={isTimeOver} listening={listening}/>
+        if (section === 2) return <Writing disabled={isTimeOver} writing={writing}/>
+        
         return (
             <Paper sx={{
                 height: '70vh',
@@ -89,7 +91,7 @@ const TestDetail = () => {
                 {section < 3 && (
                     <TestTimer
                         key={sectionKey}
-                        duration={1}
+                        duration={section === 2 ? 0.67 :1}
                         onTimeEnd={handleTimeEnd}
                         isPaused={openConfirm || startConfirm}
                     />
