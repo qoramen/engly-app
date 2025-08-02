@@ -1,12 +1,14 @@
-import { Routes, Route } from 'react-router-dom';
-import { Footer, Navbar, Main, Whatwedo, Contact, Tests, TestCard, TestDetail } from '../';
+import { Footer, Navbar, Main, Whatwedo, Test, Teachers, Contact, Home, UserDetail, Tests, TestCard, TestDetail } from '../';
 import { Box } from '@mui/material';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 const App = () => {
   const [reading, setReading] = useState([]);
   const [listening, setListening] = useState([]);
   const [writing, setWriting] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios
@@ -41,23 +43,13 @@ const App = () => {
   }, []);
 
   return (
-    <Box>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={
-          <>
-            <Main />
-            <Whatwedo />
-            <TestCard />
-            <Contact />
-          </>
-        } />
-        <Route path='/tests' element={<Tests />} />
-        <Route path='/test/:id' element={<TestDetail reading={reading} listening={listening} writing={writing}/>} />
-      </Routes>
-
-      <Footer />
-    </Box>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/teachers" element={<Teachers />} />
+      <Route path="/teachers/:id" element={<UserDetail />} />
+      <Route path='/tests' element={<Tests />} />
+      <Route path='/test/:id' element={<TestDetail reading={reading} listening={listening} writing={writing} />
+    </Routes>
   )
 }
 
