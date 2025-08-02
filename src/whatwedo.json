@@ -9,7 +9,7 @@
                 "description": "Get hands-on experience with real exam formats. Practice in a genuine computer-delivered environment that mirrors the official IELTS test."
             },
             {
-                "icon": "fas fa-clock",
+                "icon": "far fa-clock",
                 "title": "Real-Time Simulation",
                 "description": "Our platform simulates actual test timing and interface. Train your time management skills and build confidence before the real test day."
             },
@@ -28,24 +28,24 @@
     "card": [
         {
             "type": "Listening",
-            "title": "Academic Listening Practice Test 1",
+            "title": "IELTS Listening Practice Test 1",
             "level": "Intermediate",
-            "description": "Practice listening skills with academic audio materials.",
-            "duration": 30
-        },
-        {
-            "type": "Reading",
-            "title": "General Reading Sample Test A",
-            "level": "Beginner",
-            "description": "Improve reading comprehension with general topics.",
+            "description": "Practice listening to a range of conversations and monologues with questions.",
             "duration": 60
         },
         {
-            "type": "Speaking",
-            "title": "Mock Interview Session",
+            "type": "Reading",
+            "title": "IELTS Academic Reading Test 1",
+            "level": "Advanced",
+            "description": "Develop your ability to read academic texts and answer related questions.",
+            "duration": 60
+        },
+        {
+            "type": "Writing",
+            "title": "IELTS Writing Task 1 - Graph Description",
             "level": "Intermediate",
-            "description": "Practice IELTS speaking with timed questions.",
-            "duration": 15
+            "description": "Write a report describing a graph, chart or diagram.",
+            "duration": 60
         }
     ]
 }

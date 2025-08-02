@@ -4,7 +4,7 @@ const Whatwedo = () => {
 
     const data = whatwedo.section
     return (
-        <Box id="whatwedo" sx={{
+        <Box sx={{
             backgroundColor: '#f6f6f6',
             display: 'flex',
             alignItems: 'center',
