@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
-import { Footer, Navbar, Main, Whatwedo, Test, Contact } from '../';
+import { Footer, Navbar, Main, Whatwedo, Test, Teachers, Contact, Home } from '../';
 import { Box } from '@mui/material';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [reading, setReading] = useState([]);
@@ -42,19 +42,10 @@ const App = () => {
   }, []);
 
   return (
-    <Box>
-      <Navbar />
-      <Main />
-      <Whatwedo />
-      <Test />
-      <Contact />
-      {/* <Routes>
-        <Route path='/' element={<Main />} />
-        <Route path='/tests' element={<Tests />} />
-        <Route path='/test/:id' element={<TestDeatil />} />
-      </Routes> */}
-      <Footer />
-    </Box>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/teachers" element={<Teachers />} />
+    </Routes>
   )
 }
 
