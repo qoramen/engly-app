@@ -5,5 +5,11 @@ export { default as Main } from './main/main'
 export { default as Whatwedo } from './whatwedo/whatwedo'
 export { default as Test } from './Tests/tests'
 export { default as Contact } from './contact/contact'
+
+export { default as ListeningTable } from '../tables/Listening'
+export { default as ReadingTable } from '../tables/Reading'
+export { default as WritingView } from '../tables/Writing'
+
+export { default as UserDetail } from '../pages/UserDetail'
 export { default as Teachers } from '../pages/Teachers'
 export { default as Home } from '../pages/Home'

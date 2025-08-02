@@ -1,4 +1,4 @@
-import { Footer, Navbar, Main, Whatwedo, Test, Teachers, Contact, Home } from '../';
+import { Footer, Navbar, Main, Whatwedo, Test, Teachers, Contact, Home, UserDetail } from '../';
 import { Box } from '@mui/material';
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -8,6 +8,7 @@ const App = () => {
   const [reading, setReading] = useState([]);
   const [listening, setListening] = useState([]);
   const [writing, setWriting] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     axios
@@ -45,6 +46,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/teachers" element={<Teachers />} />
+      <Route path="/teachers/:id" element={<UserDetail />} />
     </Routes>
   )
 }
